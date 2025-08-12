@@ -6,7 +6,9 @@ const selectorEntradas = document.getElementById('selector-entradas')
 const textoEntradas = document.getElementById('texto-entradas')
 const textoSectores = document.getElementById('texto-sectores')
 const iconoSectores = document.querySelectorAll('#iconoSectores rect')
+const iconoPago = document.querySelectorAll('#iconoPago rect')
 const resumen = document.getElementById('resumen-compra')
+const botonComprar = document.getElementById('boton-confirmar')
 
 let showSeleccionado = []
 let entradasSeleccionadas
@@ -47,10 +49,46 @@ const shows = [
     },
 ]
 
-function calcularTotal () {
-    let total = showSeleccionado[0].precio * entradasSeleccionadas
+function renderizarResumen() {
 
-    return total
+    resumen.innerHTML = `
+                <h2>Resumen de Compra</h2>
+  
+                <p><strong>${showSeleccionado[0].autor} – ${showSeleccionado[0].titulo}</strong> </p>
+  
+                <p>
+                    <strong>Fecha:</strong> 
+                    ${showSeleccionado[0].dia} (${showSeleccionado[0].diaSemana}) de ${showSeleccionado[0].mes} – ${showSeleccionado[0].horario}
+                </p>
+  
+                <p> <strong>Cantidad de entradas:</strong> ${entradasSeleccionadas}  </p>
+                <p> <strong>Precio por entrada:</strong> $${showSeleccionado[0].precio} </p>
+  
+                <p> <strong>Sector:</strong> ${sectorSeleccionado}</p>
+  
+                <p class="total">
+                    <strong>Total:</strong> $${entradasSeleccionadas * showSeleccionado[0].precio}
+                </p>
+  
+                <button id="boton-confirmar">Comprar</button>
+                `;
+
+    const botonComprar = document.getElementById('boton-confirmar');
+
+    botonComprar.addEventListener('click', () => {
+
+        showSeleccionado = []
+        contenedorCards.classList.remove('ocultar');
+        contenedorCompra.classList.add('ocultar');
+        selectorSectores.classList.add('ocultar')
+        resumen.classList.add('ocultar');
+        selectorEntradas.classList.remove('ocultar')
+
+        
+    })
+
+    seleccionDeShow()
+    
 }
 
 function seleccionSector() {
@@ -67,12 +105,19 @@ function seleccionSector() {
             selectorSectores.classList.add('ocultar')
             resumen.classList.remove('ocultar')
 
+            renderizarResumen()
+            cambioColorIconoPago()
         })
     })
 }
 
 function cambioColorIconoSectores() {
     iconoSectores.forEach(rect => {
+        rect.setAttribute('stroke', '#A80000');
+    });
+}
+function cambioColorIconoPago() {
+    iconoPago.forEach(rect => {
         rect.setAttribute('stroke', '#A80000');
     });
 }
@@ -96,7 +141,7 @@ function seleccionEntradas() {
     });
 
     seleccionSector()
-    
+
 }
 
 function seleccionDeShow() {
@@ -160,4 +205,9 @@ contenedorCards.addEventListener('click', () => {
 
     contenedorCompra.classList.remove('ocultar');
 
-});
+})
+
+
+
+
+
