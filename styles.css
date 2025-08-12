@@ -1,0 +1,384 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: #A80000;
+}
+
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  height: 90px;
+  width: 100%;
+  padding: 1rem;
+  justify-items: center;
+}
+
+.logo-teatro {
+  height: 100%;
+  width: auto;
+  display: flex;
+}
+
+.selecionado {
+  color: #A80000;
+  font-weight: 500;
+}
+
+#contenedor-cards {
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-inline: 3rem;
+}
+
+.contenedor-card {
+  cursor: pointer;
+  display: flex;
+  width: 320px;
+  position: relative;
+  border: none;
+  height: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.contenedor-card:hover {
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.18);
+}
+
+.contenedor-card__imagen {
+  width: 100%;
+  height: auto;
+}
+
+.contenedor-card__imagen img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1rem 1rem 2rem 2rem;
+}
+
+.contenedor-card__texto {
+  display: flex;
+  border: none;
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  height: auto;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+.contenedor-card__texto-nombre {
+  display: flex;
+  text-transform: uppercase;
+  height: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-family: proxima-nova, sans-serif;
+  font-weight: bolder;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.contenedor-card__texto-fecha {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  height: 1rem;
+  align-items: center;
+}
+
+.contenedor-card__texto-fecha-contenido {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100%;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.contenedor-card__texto-numero {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  font-style: normal;
+  color: #A80000;
+}
+
+
+.contenedor-compra {
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-inline: 3rem;
+}
+
+.titulo-show {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  font-style: normal;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-inline: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px 16px 0px 0px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  padding: 1rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#selector-sectores {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 20px;              
+  padding: 20px;
+}
+
+.plano, .formulario-sector {
+  flex: 1 1 50%;  
+  max-width: 50%;
+  box-sizing: border-box;
+}
+
+.plano {
+  display: flex;
+  width: 50%;
+  max-width: 100%;
+  height: auto;
+}
+
+.formulario-sector {
+  display: flex;
+  justify-content: center;
+}
+
+.titulo-sector{
+  padding-bottom: 2rem;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+}
+
+#contenedor-selecciones {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  font-style: normal;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0px 0px 16px 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.contenedor-opcion{
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#contenedor-selecciones__entradas{
+border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#contenedor-selecciones__sectores{
+border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.seleccionado{
+  border-top: 1px solid #A80000;
+}
+.contenedor-opcion img {
+  width: 3rem;
+}
+
+
+.ocultar {
+  display: none !important;
+}
+
+.titulo-entradas{
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.formulario-entradas {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+}
+
+.formulario-sector {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  display: flex;
+}
+
+fieldset {
+  border: none;
+  text-align: center;
+}
+
+.opciones {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sectores{
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.sectores label span{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  height: 80px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  border: 0.5px solid #dddddd;
+  border-radius: 16px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+label {
+  display: inline-block;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  border: 0.5px solid #dddddd;
+  border-radius: 16px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+label span:hover {
+  border-color: #A80000;
+}
+
+input[type="radio"]:checked + span {
+  background-color: #A80000;
+  color: #fff;
+  border-color: #A80000;
+}
+
+
+#resumen-compra {
+  max-width: auto;
+  margin: 20px auto;
+  margin-top: 4rem;
+  padding: 3rem;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  background-color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.05);
+}
+
+#resumen-compra h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 2rem;
+  padding-bottom: 8px;
+  text-align: center;
+  line-height: 1.4;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  font-style: normal;
+}
+
+#resumen-compra p {
+  margin: 8px 0;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.4;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+}
+
+#boton-confirmar {
+  display: block;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 12px 0;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  color: #A80000;
+  border: 1px solid;
+  border-color: #A80000;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  font-style: normal;
+}
+
+#boton-confirmar:hover {
+  color: white;
+  background-color: #A80000;
+}
