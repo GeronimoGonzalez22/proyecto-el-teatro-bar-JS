@@ -78,17 +78,20 @@ function renderizarResumen() {
     botonComprar.addEventListener('click', () => {
 
         showSeleccionado = []
+        textoEntradas.innerText = `Entradas`
+        textoEntradas.classList.remove('selecionado')
+        textoSectores.innerText = `Sectores`
+        textoSectores.classList.remove('selecionado')
         contenedorCards.classList.remove('ocultar');
         contenedorCompra.classList.add('ocultar');
         selectorSectores.classList.add('ocultar')
         resumen.classList.add('ocultar');
         selectorEntradas.classList.remove('ocultar')
 
-        
     })
 
     seleccionDeShow()
-    
+
 }
 
 function seleccionSector() {
@@ -109,6 +112,7 @@ function seleccionSector() {
             cambioColorIconoPago()
         })
     })
+
 }
 
 function cambioColorIconoSectores() {
