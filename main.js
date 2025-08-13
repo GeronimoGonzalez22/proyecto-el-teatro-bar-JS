@@ -9,6 +9,7 @@ const iconoSectores = document.querySelectorAll('#iconoSectores rect')
 const iconoPago = document.querySelectorAll('#iconoPago rect')
 const resumen = document.getElementById('resumen-compra')
 const botonComprar = document.getElementById('boton-confirmar')
+const precioEntradas = document.getElementById('precio-entradas')
 
 let showSeleccionado = []
 let entradasSeleccionadas
@@ -128,6 +129,8 @@ function cambioColorIconoPago() {
 
 function seleccionEntradas() {
 
+
+    precioEntradas.innerHTML = `Valor entrada: $${showSeleccionado[0].precio}`
     const seleccionEntradas = document.querySelectorAll('input[name="entradas"]')
 
     seleccionEntradas.forEach(radio => {
