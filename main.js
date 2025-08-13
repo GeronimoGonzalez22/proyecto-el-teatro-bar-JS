@@ -17,35 +17,35 @@ let sectorSeleccionado
 
 const shows = [
     {
-        id: 1, autor: "Dani La Chepi", titulo: "Vivila como queres", fecha: "19-07-2025", dia: "Sabado", horario: "21:00hs", diaSemana: "19", mes: "Julio",
+        id: 1, autor: "Dani La Chepi", titulo: "Vivila como queres", fecha: "01-08-2025", dia: "Viernes", horario: "21:00hs", diaSemana: "01", mes: "Agosto",
         entradasSectorA: 6, entradasSectorB: 11, entradasSectorC: 6, entradasSectorD: 3, precio: 22000, imagen: "./images/Chepi-FEED.jpg"
     },
     {
-        id: 2, autor: "Hector Rossi", titulo: "Transnoche paranormal", fecha: "20-07-2025", dia: "Domingo", horario: "20:00hs", diaSemana: "20", mes: "Julio",
+        id: 2, autor: "Hector Rossi", titulo: "Transnoche paranormal", fecha: "02-08-2025", dia: "Sabado", horario: "20:00hs", diaSemana: "02", mes: "Agosto",
         entradasSectorA: 3, entradasSectorB: 9, entradasSectorC: 5, entradasSectorD: 2, precio: 19000, imagen: "./images/Rossi-FEED.jpg"
     },
     {
-        id: 3, autor: "Sole Macchi", titulo: "Mentime que me gusta", fecha: "25-07-2025", dia: "Viernes", horario: "21:00hs", diaSemana: "25", mes: "Julio",
+        id: 3, autor: "Sole Macchi", titulo: "Mentime que me gusta", fecha: "07-08-2025", dia: "Jueves", horario: "21:30hs", diaSemana: "07", mes: "Agosto",
         entradasSectorA: 2, entradasSectorB: 5, entradasSectorC: 4, entradasSectorD: 8, precio: 25000, imagen: "./images/Sole-FEED.jpg"
     },
     {
-        id: 4, autor: "Juan Barraza", titulo: "En un confuso episodio", fecha: "26-07-2025", dia: "Sabado", horario: "21:00hs", diaSemana: "26", mes: "Julio",
+        id: 4, autor: "Juan Barraza", titulo: "En un confuso episodio", fecha: "09-08-2025", dia: "Sabado", horario: "21:00hs", diaSemana: "09", mes: "Agosto",
         entradasSectorA: 6, entradasSectorB: 8, entradasSectorC: 2, entradasSectorD: 4, precio: 20000, imagen: "./images/Barraza-FEED.jpg"
     },
     {
-        id: 5, autor: "Lucas Upstein", titulo: "Angel Caido", fecha: "01-08-2025", dia: "Viernes", horario: "21:00hs", diaSemana: "01", mes: "Agosto",
+        id: 5, autor: "Lucas Upstein", titulo: "Angel Caido", fecha: "16-08-2025", dia: "Sabado", horario: "21:30hs", diaSemana: "16", mes: "Agosto",
         entradasSectorA: 2, entradasSectorB: 1, entradasSectorC: 4, entradasSectorD: 3, precio: 22000, imagen: "./images/Epstein-FEED.jpg"
     },
     {
-        id: 6, autor: "Ezequiel Campa", titulo: "Si pero NO", fecha: "02-08-2025", dia: "Sabado", horario: "21:00hs", diaSemana: "02", mes: "Agosto",
+        id: 6, autor: "Ezequiel Campa", titulo: "Si pero NO", fecha: "17-08-2025", dia: "Domingo", horario: "20:00hs", diaSemana: "17", mes: "Agosto",
         entradasSectorA: 1, entradasSectorB: 3, entradasSectorC: 4, entradasSectorD: 1, precio: 15000, imagen: "./images/Campa-FEED.jpg"
     },
     {
-        id: 7, autor: "Sauda", titulo: "Intimo", fecha: "02-08-2025", dia: "Sabado", horario: "21:00hs", diaSemana: "02", mes: "Agosto",
+        id: 7, autor: "Sauda", titulo: "Intimo", fecha: "28-08-2025", dia: "Jueves", horario: "21:00hs", diaSemana: "28", mes: "Agosto",
         entradasSectorA: 1, entradasSectorB: 3, entradasSectorC: 4, entradasSectorD: 1, precio: 15000, imagen: "./images/Sauda-FEED.jpg"
     },
     {
-        id: 8, autor: "Nicolas D Tracy", titulo: "Crónico", fecha: "02-08-2025", dia: "Sabado", horario: "21:00hs", diaSemana: "02", mes: "Agosto",
+        id: 8, autor: "Nicolas D Tracy", titulo: "Crónico", fecha: "29-08-2025", dia: "Viernes", horario: "21:00hs", diaSemana: "29", mes: "Agosto",
         entradasSectorA: 1, entradasSectorB: 3, entradasSectorC: 4, entradasSectorD: 1, precio: 15000, imagen: "./images/DeTracy-FEED.png"
     },
 ]
