@@ -185,6 +185,21 @@ header {
   font-style: normal;
 }
 
+#iconoSectores rect{
+  stroke: #4C4C4C;
+}
+
+#iconoSectores.iconoActivo rect {
+    stroke:#A80000
+}
+
+#iconoPago rect{
+  stroke: #4C4C4C;
+}
+#iconoPago.iconoActivo rect {
+    stroke:#A80000
+}
+
 #contenedor-selecciones {
   font-family: proxima-nova, sans-serif;
   font-weight: 400;
@@ -315,6 +330,12 @@ label span:hover {
 }
 
 input[type="radio"]:checked + span {
+  background-color: #A80000;
+  color: #fff;
+  border-color: #A80000;
+}
+
+input[type="radio"]:active + span {
   background-color: #A80000;
   color: #fff;
   border-color: #A80000;

@@ -5,8 +5,8 @@ const selectorSectores = document.getElementById('selector-sectores')
 const selectorEntradas = document.getElementById('selector-entradas')
 const textoEntradas = document.getElementById('texto-entradas')
 const textoSectores = document.getElementById('texto-sectores')
-const iconoSectores = document.querySelectorAll('#iconoSectores rect')
-const iconoPago = document.querySelectorAll('#iconoPago rect')
+const iconoSectores = document.getElementById('iconoSectores')
+const iconoPago = document.getElementById('iconoPago')
 const resumen = document.getElementById('resumen-compra')
 const botonComprar = document.getElementById('boton-confirmar')
 const precioEntradas = document.getElementById('precio-entradas')
@@ -50,6 +50,14 @@ const shows = [
     },
 ]
 
+
+
+function resetearRadios() {
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.checked = false;
+    });
+}
+
 function renderizarResumen() {
 
     resumen.innerHTML = `
@@ -83,6 +91,8 @@ function renderizarResumen() {
         textoEntradas.classList.remove('selecionado')
         textoSectores.innerText = `Sectores`
         textoSectores.classList.remove('selecionado')
+        iconoPago.classList.remove('iconoActivo')
+        iconoSectores.classList.remove('iconoActivo')
         contenedorCards.classList.remove('ocultar');
         contenedorCompra.classList.add('ocultar');
         selectorSectores.classList.add('ocultar')
@@ -101,30 +111,19 @@ function seleccionSector() {
     seleccionSector.forEach(radio => {
         radio.addEventListener('change', () => {
             sectorSeleccionado = radio.value
-            console.log("Sector selecionado:", sectorSeleccionado)
-
 
             textoSectores.innerText = `Sector ${sectorSeleccionado}`
             textoSectores.classList.add('selecionado')
+
             selectorSectores.classList.add('ocultar')
             resumen.classList.remove('ocultar')
 
+            iconoPago.classList.add('iconoActivo');
             renderizarResumen()
-            cambioColorIconoPago()
+            resetearRadios()
         })
     })
 
-}
-
-function cambioColorIconoSectores() {
-    iconoSectores.forEach(rect => {
-        rect.setAttribute('stroke', '#A80000');
-    });
-}
-function cambioColorIconoPago() {
-    iconoPago.forEach(rect => {
-        rect.setAttribute('stroke', '#A80000');
-    });
 }
 
 function seleccionEntradas() {
@@ -136,19 +135,26 @@ function seleccionEntradas() {
     seleccionEntradas.forEach(radio => {
         radio.addEventListener('change', () => {
             entradasSeleccionadas = radio.value
-            console.log("Entradas elegidas:", entradasSeleccionadas)
 
             textoEntradas.innerText = `${entradasSeleccionadas} Entradas`
             textoEntradas.classList.add('selecionado')
+
             selectorSectores.classList.remove('ocultar')
             selectorEntradas.classList.add('ocultar')
 
-            cambioColorIconoSectores()
+            iconoSectores.classList.add('iconoActivo');
+            resetearRadios()
         });
     });
 
     seleccionSector()
 
+}
+
+function agregarTituloShow() {
+    tituloShow.innerText = `${showSeleccionado[0].autor} - ${showSeleccionado[0].titulo} `
+
+    seleccionEntradas()
 }
 
 function seleccionDeShow() {
@@ -165,12 +171,6 @@ function seleccionDeShow() {
             agregarTituloShow()
         })
     })
-}
-
-function agregarTituloShow() {
-    tituloShow.innerText = `${showSeleccionado[0].autor} - ${showSeleccionado[0].titulo} `
-
-    seleccionEntradas()
 }
 
 function renderizarCards() {
