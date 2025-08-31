@@ -23,7 +23,7 @@ function renderizarDetalleShow() {
         document.title = `${show.autor} - ${show.titulo}`
         contenedorShow.innerHTML = `
       <h1>${show.titulo}</h1>
-      <img src="${show.imagen}" alt="${show.titulo}">
+      <img src="../images/${show.imagen}" alt="${show.titulo}">
       <p><strong>Fecha:</strong> ${show.dia} ${show.diaSemana} - ${show.horario}</p>
       <p>${show.descripcion || ""}</p>
       <button onclick="location.href='compra.html?id=${show.id}'">Comprar</button>

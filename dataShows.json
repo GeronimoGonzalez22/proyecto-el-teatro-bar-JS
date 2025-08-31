@@ -13,7 +13,7 @@
     "entradasSectorC": 6,
     "entradasSectorD": 3,
     "precio": 22000,
-    "imagen": "/images/Chepi-FEED.jpg"
+    "imagen": "Chepi-FEED.jpg"
   },
   {
     "id": 2,
@@ -29,7 +29,7 @@
     "entradasSectorC": 5,
     "entradasSectorD": 2,
     "precio": 19000,
-    "imagen": "/images/Rossi-FEED.jpg"
+    "imagen": "Rossi-FEED.jpg"
   },
   {
     "id": 3,
@@ -45,7 +45,7 @@
     "entradasSectorC": 4,
     "entradasSectorD": 8,
     "precio": 25000,
-    "imagen": "/images/Sole-FEED.jpg"
+    "imagen": "Sole-FEED.jpg"
   },
   {
     "id": 4,
@@ -61,7 +61,7 @@
     "entradasSectorC": 2,
     "entradasSectorD": 4,
     "precio": 20000,
-    "imagen": "/images/Barraza-FEED.jpg"
+    "imagen": "Barraza-FEED.jpg"
   },
   {
     "id": 5,
@@ -77,7 +77,7 @@
     "entradasSectorC": 4,
     "entradasSectorD": 3,
     "precio": 22000,
-    "imagen": "/images/Epstein-FEED.jpg"
+    "imagen": "Epstein-FEED.jpg"
   },
   {
     "id": 6,
@@ -93,7 +93,7 @@
     "entradasSectorC": 4,
     "entradasSectorD": 1,
     "precio": 15000,
-    "imagen": "/images/Campa-FEED.jpg"
+    "imagen": "Campa-FEED.jpg"
   },
   {
     "id": 7,
@@ -109,7 +109,7 @@
     "entradasSectorC": 4,
     "entradasSectorD": 1,
     "precio": 15000,
-    "imagen": "/images/Sauda-FEED.jpg"
+    "imagen": "Sauda-FEED.jpg"
   },
   {
     "id": 8,
@@ -125,6 +125,6 @@
     "entradasSectorC": 4,
     "entradasSectorD": 1,
     "precio": 15000,
-    "imagen": "/images/DeTracy-FEED.png"
+    "imagen": "DeTracy-FEED.png"
   }
 ]

@@ -161,14 +161,14 @@ function agregarTituloShow() {
 
 function seleccionDeShow() {
 
-  const cards = document.querySelectorAll('.contenedor-card')
+    const cards = document.querySelectorAll('.contenedor-card')
 
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const id = card.id
-      window.location.href = `./pages/show.html?id=${id}`
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const id = card.id
+            window.location.href = `./pages/show.html?id=${id}`
+        });
     });
-  });
 }
 
 
@@ -177,14 +177,11 @@ function renderizarCards() {
     shows.forEach((show) => {
         contenedorCards.innerHTML += `
             <div class='contenedor-card' id="${show.id}">
-                
                 <div class="contenedor-card__imagen">
-                    <img src=${show.imagen} alt=${show.autor}">
+                    <img src="./images/${show.imagen}" alt="${show.autor}">
                 </div>
-
                 <div class="contenedor-card__texto">
                     <div class="contenedor-card__texto-nombre">${show.autor}</div>
-
                     <div class="contenedor-card__texto-fecha">
                         <div class="contenedor-card__texto-fecha-contenido">
                             <span>${show.dia}</span>
@@ -193,25 +190,23 @@ function renderizarCards() {
                         </div>
                     </div>
                 </div>
-                
-            </div>
-        `
+            </div>`
     })
 
     seleccionDeShow()
 }
 
 async function cargarShows() {
-    
-	try {
-		let res = await fetch('./dataShows.json')
-		let data = await res.json()
+
+    try {
+        let res = await fetch('./dataShows.json')
+        let data = await res.json()
 
         shows.push(...data)
 
-	} catch (error) {
-		console.error("Error al cargar los datos: ", error)
-	}
+    } catch (error) {
+        console.error("Error al cargar los datos: ", error)
+    }
 }
 
 
