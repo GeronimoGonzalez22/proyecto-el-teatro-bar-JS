@@ -15,7 +15,7 @@ let showSeleccionado = []
 let entradasSeleccionadas
 let sectorSeleccionado
 
-const shows = [
+/* const shows = [
     {
         id: 1, autor: "Dani La Chepi", titulo: "Vivila como queres", fecha: "01-08-2025", dia: "Viernes", horario: "21:00hs", diaSemana: "01", mes: "Agosto",
         entradasSectorA: 6, entradasSectorB: 11, entradasSectorC: 6, entradasSectorD: 3, precio: 22000, imagen: "./images/Chepi-FEED.jpg"
@@ -48,8 +48,9 @@ const shows = [
         id: 8, autor: "Nicolas D Tracy", titulo: "Crónico", fecha: "29-08-2025", dia: "Viernes", horario: "21:00hs", diaSemana: "29", mes: "Agosto",
         entradasSectorA: 1, entradasSectorB: 3, entradasSectorC: 4, entradasSectorD: 1, precio: 15000, imagen: "./images/DeTracy-FEED.png"
     },
-]
+] */
 
+const shows = []
 
 
 function resetearRadios() {
@@ -157,23 +158,22 @@ function agregarTituloShow() {
     seleccionEntradas()
 }
 
+
 function seleccionDeShow() {
-    const showCard = document.querySelectorAll('.contenedor-card')
-    const arrayShowCards = Array.from(showCard)
 
-    arrayShowCards.forEach((card) => {
-        card.addEventListener('click', (evento) => {
-            let id = evento.target.parentNode.parentNode.id
-            let show = shows.find((elemento) => elemento.id == id)
+  const cards = document.querySelectorAll('.contenedor-card')
 
-            showSeleccionado.push({ ...show })
-
-            agregarTituloShow()
-        })
-    })
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.id
+      window.location.href = `./pages/show.html?id=${id}`
+    });
+  });
 }
 
+
 function renderizarCards() {
+
     shows.forEach((show) => {
         contenedorCards.innerHTML += `
             <div class='contenedor-card' id="${show.id}">
@@ -201,8 +201,23 @@ function renderizarCards() {
     seleccionDeShow()
 }
 
+async function cargarShows() {
+    
+	try {
+		let res = await fetch('./dataShows.json')
+		let data = await res.json()
 
-document.addEventListener('DOMContentLoaded', () => {
+        shows.push(...data)
+
+	} catch (error) {
+		console.error("Error al cargar los datos: ", error)
+	}
+}
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+
+    await cargarShows()
     renderizarCards()
 })
 
