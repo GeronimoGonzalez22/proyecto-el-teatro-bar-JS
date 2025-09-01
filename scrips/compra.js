@@ -2,11 +2,13 @@ const contenedorCompra = document.getElementById('contenedor-compra')
 const precioEntradas = document.getElementById('precio-entradas')
 const textoEntradas = document.getElementById('texto-entradas')
 const textoSectores = document.getElementById('texto-sectores')
+const iconoPago = document.getElementById('iconoPago')
 const tituloShow = document.querySelector('.titulo-show')
 const selectorEntradas = document.getElementById('selector-entradas')
 const OpcionSelectorEntradas = document.getElementById('contenedor-selecciones__entradas')
 const iconoSectores = document.getElementById('iconoSectores')
 const OpcionSelectorSectores = document.getElementById('contenedor-selecciones__sectores')
+const contenedorPasos = document.getElementById('contenedor-pasos');
 
 const params = new URLSearchParams(window.location.search)
 const id = params.get("id")
@@ -14,6 +16,7 @@ const id = params.get("id")
 const shows = []
 let show
 let entradasSeleccionadas
+let sectorSeleccionado
 
 
 
@@ -50,21 +53,24 @@ function renderizarTituloShow() {
     }
 }
 
-OpcionSelectorEntradas.addEventListener('click', () => {
-    selectorEntradas.classList.add('moverCentro')
-    selectorEntradas.classList.remove('moverIzq')
-    selectorEntradas.classList.remove('moverCentro')
-    iconoSectores.classList.remove('iconoActivo')
-    OpcionSelectorSectores.classList.remove('paso-activo')
-    textoEntradas.innerText = `Entradas`
-    textoEntradas.classList.remove('selecionado')
-    seleccionEntradas()
-    resetearRadios()
-})
+function seleccionSector() {
+    const seleccionSector = document.querySelectorAll('input[name="sector"]')
 
+    seleccionSector.forEach(radio => {
+        radio.addEventListener('change', () => {
+            sectorSeleccionado = radio.value
+
+            textoSectores.innerText = `Sector ${sectorSeleccionado}`
+            textoSectores.classList.add('selecionado')
+
+            iconoPago.classList.add('iconoActivo');
+            irAlPaso(2)
+        })
+    })
+}
 
 function seleccionEntradas() {
-
+    irAlPaso(0)
     precioEntradas.innerHTML = `Valor entrada: $${show.precio}`
     const seleccionEntradas = document.querySelectorAll('input[name="entradas"]')
 
@@ -75,23 +81,33 @@ function seleccionEntradas() {
             textoEntradas.innerText = `${entradasSeleccionadas} Entradas`
             textoEntradas.classList.add('selecionado')
 
-            selectorEntradas.classList.add('moverIzq')
-
             iconoSectores.classList.add('iconoActivo');
             OpcionSelectorSectores.classList.add('paso-activo')
-            resetearRadios()
+
+            irAlPaso(1)
         });
     });
 
-
     seleccionSector()
-
 }
+
+OpcionSelectorEntradas.addEventListener('click', () => {
+    resetearRadios()
+    textoEntradas.innerText = `Entradas`
+    textoEntradas.classList.remove('selecionado')
+    iconoSectores.classList.remove('iconoActivo');
+    OpcionSelectorSectores.classList.remove('paso-activo')
+    seleccionEntradas()
+})
 
 function resetearRadios() {
     document.querySelectorAll('input[type="radio"]').forEach(radio => {
         radio.checked = false;
     });
+}
+
+function irAlPaso(n) {
+    contenedorPasos.style.transform = `translateX(-${n * 100}%)`;
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
