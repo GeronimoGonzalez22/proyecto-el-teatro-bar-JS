@@ -158,7 +158,6 @@ function agregarTituloShow() {
     seleccionEntradas()
 }
 
-
 function seleccionDeShow() {
 
     const cards = document.querySelectorAll('.contenedor-card')
@@ -170,7 +169,6 @@ function seleccionDeShow() {
         });
     });
 }
-
 
 function renderizarCards() {
 
@@ -216,13 +214,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderizarCards()
 })
 
-contenedorCards.addEventListener('click', () => {
+/* contenedorCards.addEventListener('click', () => {
 
     contenedorCards.classList.add('ocultar');
 
     contenedorCompra.classList.remove('ocultar');
 
-})
+}) */
 
 
 

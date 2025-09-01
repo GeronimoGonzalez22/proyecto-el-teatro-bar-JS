@@ -13,7 +13,10 @@
     "entradasSectorC": 6,
     "entradasSectorD": 3,
     "precio": 22000,
-    "imagen": "Chepi-FEED.jpg"
+    "imagen": "chepi.jpg",
+    "flyer": "chepi-flyer.png",
+    "descripcion": "Vivila como querés es un cautivador y estimulante espectáculo humorístico musical, en el que Dani la Chepi recorre junto a su público las delirantes e hilarantes vivencias que le provocó la maternidad. A través de sus personajes y algunas canciones que han signado su vida, Dani con su singular humor nos hace reflexionar acerca de las fastidiosas y perturbadoras emociones que transitamos a diario. Dani no solo nos hace reír, sino que también nos invita a mirar las complicaciones de la vida desde otro lugar. El show se convierte en un espacio donde el público se siente parte de cada anécdota, creando un ambiente de risas compartidas y reflexión. Seguí intentando, la vida es corta, Vivila como querés.",
+    "video": "https://www.youtube.com/embed/U_tmrtEdySk?si=DL666JZ3LuwD8_QK"
   },
   {
     "id": 2,
@@ -29,12 +32,15 @@
     "entradasSectorC": 5,
     "entradasSectorD": 2,
     "precio": 19000,
-    "imagen": "Rossi-FEED.jpg"
+    "imagen": "hectorRossi.png",
+    "flyer": "hectorRossi-flyer.jpg",
+    "descripcion": "Héctor Rossi es Locutor Nacional, egresado del ISER, y productor de radio y televisión. Desde hace once años conduce #TrasnocheParanormal en POP 101.5 y actualmente también está al frente de #Trasnoche26 en Canal 26, acompañando a la audiencia todas las medianoches. Fue durante quince años la voz característica de Intrusos, es la voz oficial de Warner Argentina y ha trabajado como locutor en las principales radios del país. Además, es creador de Bebana Radio y su canal de YouTube cuenta con casi 200.000 suscriptores y más de 15 millones de reproducciones. Como escritor, ha editado dos libros y recientemente publicó #MisHistoriasParanormales bajo el sello Penguin Random House, donde reúne sus relatos más impactantes. Después de once años de éxito nocturno en la radio, Héctor Rossi te invita a escuchar en primera persona sus propias historias paranormales, cara a cara. Un espectáculo único donde el misterio y lo inexplicable cobran vida frente al público. ¡Este show es real!",
+    "video": "https://www.youtube.com/embed/rCu8v657964?si=YztOy_B5K609CwEL"
   },
   {
     "id": 3,
-    "autor": "Sole Macchi",
-    "titulo": "Mentime que me gusta",
+    "autor": "Laila Roth",
+    "titulo": "Show Unipersonal",
     "fecha": "07-08-2025",
     "dia": "Jueves",
     "horario": "21:30hs",
@@ -45,12 +51,15 @@
     "entradasSectorC": 4,
     "entradasSectorD": 8,
     "precio": 25000,
-    "imagen": "Sole-FEED.jpg"
+    "imagen": "laila.png",
+    "flyer": "laila-flyer.png",
+    "descripcion": "Después de recorrer el país y gran parte del mundo con sus espectáculo anterior LUCY (Que podes ver gratis en YouTube para entrar en calor) Laila Roth vuelve al escenario con un nuevo unipersonal.Ahora... de qué se trata este show? Bueno, la verdad es que todavía está en proceso de armado. Al momento de escribir esta gacetilla, nosotros tampoco lo sabemos.Pero como dice el dicho, hay que confiar, porque si no confías, no hay confianza. Prometemos que, en unos meses, cuando tengamos idea de qué va, actualizar esta gacetilla.",
+    "video": "https://www.youtube.com/embed/rwNJtUFdqKw?si=v1v73VtGOU56rq6M"
   },
   {
     "id": 4,
     "autor": "Juan Barraza",
-    "titulo": "En un confuso episodio",
+    "titulo": "Deslices y desmanes",
     "fecha": "09-08-2025",
     "dia": "Sabado",
     "horario": "21:00hs",
@@ -61,7 +70,10 @@
     "entradasSectorC": 2,
     "entradasSectorD": 4,
     "precio": 20000,
-    "imagen": "Barraza-FEED.jpg"
+    "imagen": "barraza.jpg",
+    "flyer": "barraza-flyer.jpg",
+    "descripcion": "Con casi veinte años de recorrido en la escena del stand up, Juan Barraza presenta su noveno unipersonal donde se mete con la tragedia de los Andes, los testigos de Jehová, Sigmund Freud y los psicópatas que no queremos ver. Un show de más de una hora donde el comediante además intercala un par de momentos con la guitarra para hablar de los ofendidos de las redes sociales y el paso del tiempo. La crianza, tema presente en sus últimos cuatro espectáculos, y las siempre cambiantes e interesantes formas de hablar de los argentinos también aparecen en el menú. Uno de los artistas más prolíferos del género y referente indiscutido en la escena local y de habla hispana, Barraza nos trae una vez más un peculiar recorte de la realidad con su mirada aguda y el ritmo escénico que lo ha caracterizado en todos estos años. DESLICES Y DESMANES es una cita imperdible con la risa y la reflexión, un show donde Juan Barraza pulsa las teclas del humor con la asombrosa precisión de siempre.",
+    "video": "https://www.youtube.com/embed/QnwVeYTXPIY?si=YuuxJ_OpfocyWtgW"
   },
   {
     "id": 5,
@@ -77,12 +89,15 @@
     "entradasSectorC": 4,
     "entradasSectorD": 3,
     "precio": 22000,
-    "imagen": "Epstein-FEED.jpg"
+    "imagen": "epstein.jpg",
+    "flyer": "epstein-flyer.jpg",
+    "descripcion": "Chistes feos, labor social, cumplir 30, cancelaciones, funas, enojos, limites, la vida y la inminente muerte. En este nuevo show Lucas Upstein recorre sus ultimos años para contestar una pregunta que lo persigue: soy una buena persona...",
+    "video": "https://www.youtube.com/embed/hvLwDMUGtSY?si=3_CPi16aFjfPB_f1"
   },
   {
     "id": 6,
-    "autor": "Ezequiel Campa",
-    "titulo": "Si pero NO",
+    "autor": "Pela Romero",
+    "titulo": "Basta de amores de mierda",
     "fecha": "17-08-2025",
     "dia": "Domingo",
     "horario": "20:00hs",
@@ -93,12 +108,15 @@
     "entradasSectorC": 4,
     "entradasSectorD": 1,
     "precio": 15000,
-    "imagen": "Campa-FEED.jpg"
+    "imagen": "pelaRomero.jpg",
+    "flyer": "pelaRomero-flyer.jpg",
+    "descripcion": "EL PELA ROMERO presenta su nueva charla Basta de Amores de Mierda 2025! Con más de 500.000 libros vendidos, y 100.000 espectadores que presenciaron su charla, Basta de Amores de Mierda, Gonzalo El Pela Romero, vuelve para presentar un nuevo ida y vuelta - en vivo - con su público. Un intercambio ameno, divertido y profundo, sobre cómo detectar, evitar o salir de relaciones tóxicas, esas que padecemos a diario todos los seres humanos. Imperdible! ",
+    "video": "https://www.youtube.com/embed/pPWomLrgvo0?si=ef-okJAVgjLi7mN2"
   },
   {
     "id": 7,
-    "autor": "Sauda",
-    "titulo": "Intimo",
+    "autor": "Martin Pugliese",
+    "titulo": "El Procer del Stand Up",
     "fecha": "28-08-2025",
     "dia": "Jueves",
     "horario": "21:00hs",
@@ -109,12 +127,15 @@
     "entradasSectorC": 4,
     "entradasSectorD": 1,
     "precio": 15000,
-    "imagen": "Sauda-FEED.jpg"
+    "imagen": "pugliese.jpg",
+    "flyer": "pugliese-flyer.jpg",
+    "descripcion": "Un padre trata de entender a su hija adolescente mientras le da sentido a su pasado, y en ese proceso, surgen en su cabeza algunas preguntas que invitan a reflexionar, desde el humor, sobre las contradicciones de la vida. Pugliese se siente perdido y solo, quiere obtener un poco de respeto. Será la nostalgia el camino para sentirse vivo o simplemente tendrá que bailar el presente? En su búsqueda por abordar los quiebres generacionales, condensa sus mejores monólogos en un solo show.",
+    "video": "https://www.youtube.com/embed/6dXoNxRAkzM?si=tpqNuWnm-kotIp1J"
   },
   {
     "id": 8,
-    "autor": "Nicolas D Tracy",
-    "titulo": "Crónico",
+    "autor": "CECI HACE NAHUEL IVORRA",
+    "titulo": "Te pido mil disculpas",
     "fecha": "29-08-2025",
     "dia": "Viernes",
     "horario": "21:00hs",
@@ -125,6 +146,9 @@
     "entradasSectorC": 4,
     "entradasSectorD": 1,
     "precio": 15000,
-    "imagen": "DeTracy-FEED.png"
+    "imagen": "tePidoMil.png",
+    "flyer": "tePidoMil-flyer.png",
+    "descripcion": "Somos Ceci Hace y Nahuel Ivorra. Dos comediantes que lo único que queremos es hacer reír a la gente, y puede que algunas veces nos pasamos de la raya, nos importa? No, pero para quedar bien, te pido mil disculpas. En un mundo donde todos opinan de cualquier cosa, nosotros no queríamos ser menos y nos sumamos a esa, te pido mil disculpas. Piden disculpas antes de empezar el show? Sí, por las dudas. Y si no hacía falta? Te pido mil disculpas igual. Buscaremos la perfección, pero si eso no funciona, te pido mil disculpas de antemano. Y si te molestamos con tantas disculpas, te pido mil disculpas.",
+    "video": "https://www.youtube.com/embed/DdhbyvbxVjM?si=d-mD3Xh0BG0D-kS6"
   }
 ]

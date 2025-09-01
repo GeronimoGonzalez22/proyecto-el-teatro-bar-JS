@@ -13,10 +13,16 @@ a:hover {
   color: #A80000;
 }
 
+body {
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-size: 16px;
+}
+
 header {
   display: flex;
   justify-content: center;
-  align-items: center;   
+  align-items: center;
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   height: 90px;
@@ -25,8 +31,8 @@ header {
 }
 
 .logo-teatro {
-  height: 60px;  
-  width: auto; 
+  height: 60px;
+  width: auto;
 }
 
 
@@ -36,7 +42,7 @@ header {
 }
 
 #contenedor-cards {
-  padding: 4rem;
+  padding: 3rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -157,12 +163,13 @@ header {
   margin-top: 3rem;
   display: flex;
   justify-content: center;
-  gap: 20px;              
+  gap: 20px;
   padding: 20px;
 }
 
-.plano, .formulario-sector {
-  flex: 1 1 50%;  
+.plano,
+.formulario-sector {
+  flex: 1 1 50%;
   max-width: 50%;
   box-sizing: border-box;
 }
@@ -179,7 +186,7 @@ header {
   justify-content: center;
 }
 
-.titulo-sector{
+.titulo-sector {
   padding-bottom: 2rem;
   font-family: proxima-nova, sans-serif;
   font-weight: 500;
@@ -187,19 +194,20 @@ header {
   font-style: normal;
 }
 
-#iconoSectores rect{
+#iconoSectores rect {
   stroke: #4C4C4C;
 }
 
 #iconoSectores.iconoActivo rect {
-    stroke:#A80000
+  stroke: #A80000
 }
 
-#iconoPago rect{
+#iconoPago rect {
   stroke: #4C4C4C;
 }
+
 #iconoPago.iconoActivo rect {
-    stroke:#A80000
+  stroke: #A80000
 }
 
 #contenedor-selecciones {
@@ -217,7 +225,7 @@ header {
   align-items: center;
 }
 
-.contenedor-opcion{
+.contenedor-opcion {
   width: 100%;
   height: 6rem;
   display: flex;
@@ -226,17 +234,18 @@ header {
   gap: 1rem;
 }
 
-#contenedor-selecciones__entradas{
-border-right: 1px solid rgba(0, 0, 0, 0.1);
+#contenedor-selecciones__entradas {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#contenedor-selecciones__sectores{
-border-right: 1px solid rgba(0, 0, 0, 0.1);
+#contenedor-selecciones__sectores {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.seleccionado{
+.seleccionado {
   border-top: 1px solid #A80000;
 }
+
 .contenedor-opcion img {
   width: 3rem;
 }
@@ -246,7 +255,7 @@ border-right: 1px solid rgba(0, 0, 0, 0.1);
   display: none !important;
 }
 
-.titulo-entradas{
+.titulo-entradas {
   padding-top: 4rem;
   padding-bottom: 2rem;
   font-family: proxima-nova, sans-serif;
@@ -284,13 +293,13 @@ fieldset {
   justify-content: center;
 }
 
-.sectores{
+.sectores {
   display: flex;
   gap: 1rem;
   flex-direction: column;
 }
 
-.sectores label span{
+.sectores label span {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -331,13 +340,13 @@ label span:hover {
   border-color: #A80000;
 }
 
-input[type="radio"]:checked + span {
+input[type="radio"]:checked+span {
   background-color: #A80000;
   color: #fff;
   border-color: #A80000;
 }
 
-input[type="radio"]:active + span {
+input[type="radio"]:active+span {
   background-color: #A80000;
   color: #fff;
   border-color: #A80000;
@@ -406,7 +415,158 @@ input[type="radio"]:active + span {
   background-color: #A80000;
 }
 
-#precio-entradas{
+#precio-entradas {
   text-align: center;
   margin-top: 2rem;
+}
+
+.contenedor-fecha {
+  text-align: center;
+  box-shadow: 0px 0px 2px 0.5px rgba(0, 0, 0, 0.05);
+  border: 1.2px solid rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.bloque-fecha {
+  display: inline-block;
+  white-space: wrap;
+  margin-right: 0.25rem;
+  color: #A80000;
+}
+
+@media (max-width: 576px) {
+  .texto-show {
+    height: auto;
+  }
+  .video-show {
+    height: 45vh;
+  }
+}
+@media (min-width: 576px) {
+  .texto-show {
+    height: auto;
+  }
+  .video-show {
+    height: 50vh;
+  }
+}
+@media (min-width: 768px) {
+  .texto-show {
+    height: auto;
+  }
+  .video-show {
+    height: 55vh;
+  }
+}
+@media (min-width: 992px) {
+  .texto-show {
+    height: 55vh;
+  }
+  .video-show {
+    height: 80%;
+  }
+}
+
+.boton-comprar {
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 1rem;
+  border-style: none;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+  background-color: #A80000;
+  color: white;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.boton-comprar:hover {
+  background-color: #8A0000;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.icono-ig-show {
+  fill: black;
+  transition: fill 0.3s ease;
+}
+.icono-ig-show:hover {
+  fill: #A80000;
+}
+
+.icono-yt-show {
+  stroke: black;
+  transition: stroke 0.3s ease;
+}
+.icono-yt-show:hover {
+  stroke: #A80000;
+}
+
+.icono-fb-show {
+  stroke: black;
+  transition: stroke 0.3s ease;
+}
+.icono-fb-show:hover {
+  stroke: #A80000;
+}
+
+.icono-x-show {
+  fill: black;
+  stroke: black;
+  transition: stroke 0.3s ease;
+}
+.icono-x-show:hover {
+  stroke: #A80000;
+  fill: #A80000;
+}
+
+iframe {
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sombra-card{
+  box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.texto-show{
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.bi{
+  width: 1em;
+  height: 1em;
+}
+
+.boton-volver {
+  display: flex;
+  width: 40%;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 1rem;
+  border-style: none;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+  background-color: #A80000;
+  color: white;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.boton-volver:hover {
+  background-color: #8A0000;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
 }
