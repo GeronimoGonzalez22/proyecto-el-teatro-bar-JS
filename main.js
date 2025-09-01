@@ -207,20 +207,10 @@ async function cargarShows() {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', async () => {
-
     await cargarShows()
     renderizarCards()
 })
-
-/* contenedorCards.addEventListener('click', () => {
-
-    contenedorCards.classList.add('ocultar');
-
-    contenedorCompra.classList.remove('ocultar');
-
-}) */
 
 
 

@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -20,6 +24,9 @@ body {
 }
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,6 +38,7 @@ header {
 }
 
 .logo-teatro {
+  display: block;
   height: 60px;
   width: auto;
 }
@@ -151,6 +159,7 @@ header {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-inline: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px 16px 0px 0px;
+  margin-bottom: 0;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   display: flex;
   padding: 1rem;
@@ -207,7 +216,7 @@ header {
 }
 
 #iconoPago.iconoActivo rect {
-  stroke: #A80000
+  stroke: #A80000;
 }
 
 #contenedor-selecciones {
@@ -232,11 +241,43 @@ header {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
+}
+
+.moverIzq {
+  transform: translateX(-110vw);
+}
+.moverDer {
+  transform: translateX(110vw);
+}
+.moverCentro {
+  transform: translateX(0vw);
+}
+
+#selector-entradas {
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 
 #contenedor-selecciones__entradas {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.paso-activo-ini {
+  border-bottom: 1px solid #A80000;
+  border-radius: 0rem 0rem 0rem 1rem;
+}
+
+.paso-activo {
+  border-bottom: 1px solid #A80000;
+}
+
+.paso-activo-final {
+  border-bottom: 1px solid #A80000;
+  border-radius: 0rem 0rem 1rem 0rem;
+}
+
+
 
 #contenedor-selecciones__sectores {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -439,30 +480,37 @@ input[type="radio"]:active+span {
   .texto-show {
     height: auto;
   }
+
   .video-show {
     height: 45vh;
   }
 }
+
 @media (min-width: 576px) {
   .texto-show {
     height: auto;
   }
+
   .video-show {
     height: 50vh;
   }
 }
+
 @media (min-width: 768px) {
   .texto-show {
     height: auto;
   }
+
   .video-show {
     height: 55vh;
   }
 }
+
 @media (min-width: 992px) {
   .texto-show {
     height: 55vh;
   }
+
   .video-show {
     height: 80%;
   }
@@ -487,6 +535,7 @@ input[type="radio"]:active+span {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
+
 .boton-comprar:hover {
   background-color: #8A0000;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
@@ -496,6 +545,7 @@ input[type="radio"]:active+span {
   fill: black;
   transition: fill 0.3s ease;
 }
+
 .icono-ig-show:hover {
   fill: #A80000;
 }
@@ -504,6 +554,7 @@ input[type="radio"]:active+span {
   stroke: black;
   transition: stroke 0.3s ease;
 }
+
 .icono-yt-show:hover {
   stroke: #A80000;
 }
@@ -512,6 +563,7 @@ input[type="radio"]:active+span {
   stroke: black;
   transition: stroke 0.3s ease;
 }
+
 .icono-fb-show:hover {
   stroke: #A80000;
 }
@@ -521,6 +573,7 @@ input[type="radio"]:active+span {
   stroke: black;
   transition: stroke 0.3s ease;
 }
+
 .icono-x-show:hover {
   stroke: #A80000;
   fill: #A80000;
@@ -533,16 +586,16 @@ iframe {
   box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.2);
 }
 
-.sombra-card{
+.sombra-card {
   box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.25);
 }
 
-.texto-show{
+.texto-show {
   font-size: 18px;
   font-weight: 400;
 }
 
-.bi{
+.bi {
   width: 1em;
   height: 1em;
 }
@@ -566,6 +619,7 @@ iframe {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
+
 .boton-volver:hover {
   background-color: #8A0000;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
