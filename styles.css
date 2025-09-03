@@ -380,6 +380,16 @@ input[type="radio"]:active+span {
   border-color: #A80000;
 }
 
+input[type="radio"]:disabled {
+  cursor: not-allowed;
+}
+
+input[type="radio"]:disabled + .boton-sectores {
+  color: #aaa;               
+  opacity: 0.6;           
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
 
 #resumen-compra {
   max-width: auto;
@@ -691,34 +701,32 @@ iframe {
   background: #8A0000;
 }
 
-/* Contenedor de botones */
 .swal2-actions {
   display: flex !important;
   gap: 10px;
   justify-content: center;
 }
 
-/* Estilo común para ambos botones */
+
 .swal2-confirm,
 .swal2-cancel {
-  display: flex;                  /* Para centrar texto */
+  display: flex;                  
   justify-content: center;
   align-items: center;
-  flex: 1;                        /* Ambos botones toman el mismo ancho */
+  flex: 1;                        
   padding: 0.75rem 2rem;
   font-weight: 600;
   font-size: 1rem;
   border-radius: 1rem;
   text-align: center;
-  white-space: nowrap;            /* Evita que el texto se divida */
+  white-space: nowrap;            
   transition: all 0.3s;
   cursor: pointer;
   box-sizing: border-box;
-  min-width: 200px;               /* Garantiza un tamaño mínimo */
-  max-width: 250px;               /* Opcional, evita que sea demasiado grande */
+  min-width: 200px;               
+  max-width: 250px;               
 }
 
-/* Confirmar */
 .swal2-confirm {
   background-color: #fff !important;
   border: 2px solid #A80000 !important;
@@ -730,7 +738,6 @@ iframe {
   color: #fff !important;
 }
 
-/* Cancelar */
 .swal2-cancel {
   background-color: #fff !important;
   border: 2px solid #888 !important;
@@ -753,3 +760,4 @@ iframe {
 .swal2-input{
 margin: 0.5em 4em 0.5em;
 }
+

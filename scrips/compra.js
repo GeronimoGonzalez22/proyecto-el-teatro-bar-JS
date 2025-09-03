@@ -8,8 +8,8 @@ const selectorEntradas = document.getElementById('selector-entradas')
 const OpcionSelectorEntradas = document.getElementById('contenedor-selecciones__entradas')
 const iconoSectores = document.getElementById('iconoSectores')
 const OpcionSelectorSectores = document.getElementById('contenedor-selecciones__sectores')
-const contenedorPasos = document.getElementById('contenedor-pasos');
-const formularioMetodopago = document.getElementById("formulario-metodo-pago");
+const contenedorPasos = document.getElementById('contenedor-pasos')
+const formularioMetodopago = document.getElementById("formulario-metodo-pago")
 
 const params = new URLSearchParams(window.location.search)
 const id = params.get("id")
@@ -18,8 +18,12 @@ const shows = []
 let show
 let entradasSeleccionadas
 let sectorSeleccionado
+let entradasDisponibles
 
 
+function calcularEntradasDisponibles() {
+    return show.entradasSectorA + show.entradasSectorB + show.entradasSectorC + show.entradasSectorD
+}
 
 async function cargarShows() {
     try {
@@ -54,22 +58,25 @@ function renderizarTituloShow() {
     }
 }
 
-function seleccionMetodoPago() {
-
-    formularioMetodopago.addEventListener("submit", (e) => {
-        e.preventDefault()
-
-        const metodoSeleccionado = document.querySelector('input[name="pago"]:checked');
-
-        if (metodoSeleccionado) {
-
-            //console.log(metodoSeleccionado.value);
-
-            if (metodoSeleccionado.value === "debito") {
-                //Tarjeta de Débito
-                Swal.fire({
-                    title: 'Ingrese los datos de su tarjeta y su correo',
-                    html: `
+function opcionTarjetaDebito() {
+    Swal.fire({
+        title: "Resumen de Compra",
+        html: `
+                            <p style="color: #252525; font-size: 20px;"><strong>${show.autor} – ${show.titulo}</strong></p>
+                            <p><strong>Fecha:</strong> ${show.dia} (${show.diaSemana}) de ${show.mes} – ${show.horario}</p>
+                            <p><strong>Cantidad de entradas:</strong> ${entradasSeleccionadas}</p>
+                            <p><strong>Precio por entrada:</strong> $${show.precio}</p>
+                            <p><strong>Sector:</strong> ${sectorSeleccionado}</p>
+                            <p style="color: #252525; font-size: 20px;"><strong>Total:</strong> $${entradasSeleccionadas * show.precio}</strong></p>
+                        `,
+        showCancelButton: true,
+        confirmButtonText: "IR A COMPRAR",
+        cancelButtonText: "CANCELAR",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Ingrese los datos de su tarjeta y su correo',
+                html: `
                             <input type="text" id="cardNumber" class="swal2-input" placeholder="Número de tarjeta (16 dígitos)">
                             <input type="text" id="cardName" class="swal2-input" placeholder="Nombre en la tarjeta">
                             <input type="text" id="cardExp" class="swal2-input" placeholder="MM/AA">
@@ -77,80 +84,87 @@ function seleccionMetodoPago() {
                             <p style="margin-top: 20px; font-size: 16px;">Ingrese su correo electrónico donde serán enviadas las entradas:</p>
                             <input type="email" id="email" class="swal2-input" placeholder="Correo electrónico">
                         `,
-                    confirmButtonText: 'PAGAR',
-                    cancelButtonText: 'CANCELAR',
-                    showCancelButton: true,
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    preConfirm: () => {
-                        const number = Swal.getPopup().querySelector('#cardNumber').value;
-                        const name = Swal.getPopup().querySelector('#cardName').value;
-                        const exp = Swal.getPopup().querySelector('#cardExp').value;
-                        const cvv = Swal.getPopup().querySelector('#cardCvv').value;
-                        const email = Swal.getPopup().querySelector('#email').value;
+                confirmButtonText: 'PAGAR',
+                cancelButtonText: 'CANCELAR',
+                showCancelButton: true,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                preConfirm: () => {
+                    const number = Swal.getPopup().querySelector('#cardNumber').value
+                    const name = Swal.getPopup().querySelector('#cardName').value
+                    const exp = Swal.getPopup().querySelector('#cardExp').value
+                    const cvv = Swal.getPopup().querySelector('#cardCvv').value
+                    const email = Swal.getPopup().querySelector('#email').value
 
-                        // Validaciones
-                        if (!number || !name || !exp || !cvv || !email) {
-                            Swal.showValidationMessage('Todos los campos son obligatorios');
-                            return false;
-                        }
-                        if (!/^\d{16}$/.test(number)) {
-                            Swal.showValidationMessage('Número de tarjeta inválido');
-                            return false;
-                        }
-                        if (!/^\d{2}\/\d{2}$/.test(exp)) {
-                            Swal.showValidationMessage('Fecha de expiración inválida');
-                            return false;
-                        }
-                        if (!/^\d{3,4}$/.test(cvv)) {
-                            Swal.showValidationMessage('CVV inválido');
-                            return false;
-                        }
-                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (!emailRegex.test(email)) {
-                            Swal.showValidationMessage('Ingrese un correo válido');
-                            return false;
-                        }
-                        return { number, name, exp, cvv, email };
+                    // Validaciones
+                    if (!number || !name || !exp || !cvv || !email) {
+                        Swal.showValidationMessage('Todos los campos son obligatorios')
+                        return false;
                     }
-                }).then((resultadoPago) => {
-                    if (resultadoPago.isConfirmed) {
-                        //simulando procesamiento
+                    if (!/^\d{16}$/.test(number)) {
+                        Swal.showValidationMessage('Número de tarjeta inválido')
+                        return false;
+                    }
+                    if (!/^\d{2}\/\d{2}$/.test(exp)) {
+                        Swal.showValidationMessage('Fecha de expiración inválida')
+                        return false;
+                    }
+                    if (!/^\d{3,4}$/.test(cvv)) {
+                        Swal.showValidationMessage('CVV inválido')
+                        return false;
+                    }
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                    if (!emailRegex.test(email)) {
+                        Swal.showValidationMessage('Ingrese un correo válido')
+                        return false;
+                    }
+                    return { number, name, exp, cvv, email };
+                }
+            }).then((resultadoPago) => {
+                if (resultadoPago.isConfirmed) {
+                    //simulando procesamiento
+                    Swal.fire({
+                        title: 'Procesando pago...',
+                        html: 'Por favor, espere un momento.',
+                        timer: 3000,
+                        didOpen: () => Swal.showLoading(),
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        showConfirmButton: false
+                    }).then(() => {
+                        // Modal éxito
                         Swal.fire({
-                            title: 'Procesando pago...',
-                            html: 'Por favor, espere un momento.',
-                            timer: 3000,
-                            didOpen: () => Swal.showLoading(),
+                            title: "¡Pago realizado!",
+                            html: `Se enviarán las entradas a <strong>${resultadoPago.value.email}</strong>`,
+                            icon: "success",
+                            showCancelButton: true,
+                            confirmButtonText: "DESCARGAR ENTRADAS",
+                            cancelButtonText: "SEGUIR NAVEGANDO",
+                            reverseButtons: true,
                             allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            showConfirmButton: false
-                        }).then(() => {
-                            // Modal éxito
-                            Swal.fire({
-                                title: "¡Pago realizado!",
-                                html: `Se enviarán las entradas a <strong>${resultadoPago.value.email}</strong>`,
-                                icon: "success",
-                                showCancelButton: true,
-                                confirmButtonText: "DESCARGAR ENTRADAS",
-                                cancelButtonText: "SEGUIR NAVEGANDO",
-                                reverseButtons: true,
-                                allowOutsideClick: false,
-                                allowEscapeKey: false
-                            }).then((finalResult) => {
-                                if (finalResult.isConfirmed) {
-                                    Swal.fire("Descarga iniciada", "Tus entradas se están descargando.", "info");
-                                } else if (finalResult.dismiss === Swal.DismissReason.cancel) {
-                                    Swal.fire("Continuar navegando", "Podés seguir explorando el sitio.", "info");
-                                }
-                            });
-                        });
-                    }
-                });
-            } else if (metodoSeleccionado.value === "mercadopago") {
-                //Mercado Pago
-                Swal.fire({
-                    title: "Resumen de Compra",
-                    html: `
+                            allowEscapeKey: false
+                        }).then((finalResult) => {
+                            if (finalResult.isConfirmed) {
+                                Swal.fire("Descarga iniciada", "Tus entradas se están descargando.", "info")
+                            } else if (finalResult.dismiss === Swal.DismissReason.cancel) {
+                                Swal.fire("Continuar navegando", "Podés seguir explorando el sitio.", "info")
+                            }
+                        })
+                    })
+                }
+            })
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            // cancelacion TARJETA
+        }
+
+        resetearRadios()
+    })
+}
+
+function opcionMercadoPago() {
+    Swal.fire({
+        title: "Resumen de Compra",
+        html: `
                             <p style="color: #252525; font-size: 20px;"><strong>${show.autor} – ${show.titulo}</strong></p>
                             <p><strong>Fecha:</strong> ${show.dia} (${show.diaSemana}) de ${show.mes} – ${show.horario}</p>
                             <p><strong>Cantidad de entradas:</strong> ${entradasSeleccionadas}</p>
@@ -159,135 +173,199 @@ function seleccionMetodoPago() {
                             <p style="color: #252525; font-size: 20px;"><strong>Total:</strong> $${entradasSeleccionadas * show.precio}</strong></p>
                             <p style="margin-top: 20px; font-size: 16px;">Ingrese su correo electrónico donde serán enviadas las entradas:</p>
                         `,
-                    input: 'email',
-                    inputPlaceholder: 'ejemplo@correo.com',
-                    inputAttributes: {
-                        'aria-label': 'Correo electrónico'
-                    },
+        input: 'email',
+        inputPlaceholder: 'ejemplo@correo.com',
+        inputAttributes: {
+            'aria-label': 'Correo electrónico'
+        },
+        showCancelButton: true,
+        confirmButtonText: "IR A MERCADOPAGO",
+        cancelButtonText: "CANCELAR",
+        inputValidator: (valor) => {
+            if (!valor) {
+                return 'Por favor, ingrese un correo';
+            }
+            const emailFormato = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            if (!emailFormato.test(valor)) {
+                return 'Ingrese un correo válido';
+            }
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const emailIngresado = result.value
+            Swal.fire({
+                title: 'Redirigiendo a Mercado Pago...',
+                html: 'Por favor, espere un momento.',
+                timer: 3000,
+                didOpen: () => {
+                    Swal.showLoading()
+                },
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showConfirmButton: false
+            }).then(() => {
+                // Posible espacio para redirigir a MP window.location.href = "https://www.mercadopago.com.ar/checkout"
+                Swal.fire({
+                    title: "¡Compra realizada!",
+                    html: `Se enviarán las entradas a <strong>${emailIngresado}</strong>`,
+                    icon: "success",
                     showCancelButton: true,
-                    confirmButtonText: "IR A MERCADOPAGO",
-                    cancelButtonText: "CANCELAR",
-                    inputValidator: (valor) => {
-                        if (!valor) {
-                            return 'Por favor, ingrese un correo';
-                        }
-                        const emailFormato = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (!emailFormato.test(valor)) {
-                            return 'Ingrese un correo válido';
-                        }
-                    }
+                    confirmButtonText: "DESCARGAR ENTRADAS",
+                    cancelButtonText: "SEGUIR NAVEGANDO",
+                    reverseButtons: true,
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        const emailIngresado = result.value;
-                        Swal.fire({
-                            title: 'Redirigiendo a Mercado Pago...',
-                            html: 'Por favor, espere un momento.',
-                            timer: 3000,
-                            didOpen: () => {
-                                Swal.showLoading();
-                            },
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            showConfirmButton: false
-                        }).then(() => {
-                            // Posible espacio para redirigir a MP window.location.href = "https://www.mercadopago.com.ar/checkout";
-                            Swal.fire({
-                                title: "¡Compra realizada!",
-                                html: `Se enviarán las entradas a <strong>${emailIngresado}</strong>`,
-                                icon: "success",
-                                showCancelButton: true,
-                                confirmButtonText: "DESCARGAR ENTRADAS",
-                                cancelButtonText: "SEGUIR NAVEGANDO",
-                                reverseButtons: true,
-                                allowOutsideClick: false,
-                                allowEscapeKey: false
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    // descarga las entradas
-                                    Swal.fire("Descarga iniciada", "Tus entradas se están descargando.", "info");
-                                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                                    // ir al inicio window.location.href = "/";
-                                    Swal.fire("Continuar navegando", "Podés seguir explorando el sitio.", "info");
-                                }
-                            });
-                        });
+                        // descarga las entradas
+                        Swal.fire("Descarga iniciada", "Tus entradas se están descargando.", "info")
                     } else if (result.dismiss === Swal.DismissReason.cancel) {
-                        // cancelacion MP
+                        // ir al inicio window.location.href = "/"
+                        Swal.fire("Continuar navegando", "Podés seguir explorando el sitio.", "info")
                     }
-                });
-            }
-            resetearRadios()
-        } else {
-            Swal.fire({
-                icon: "warning",
-                title: "Para continuar...",
-                text: "Por favor selecciona un método de pago",
-                confirmButtonText: "ACEPTAR"
-            });
+                })
+            })
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            // cancelacion MP
         }
-    });
+
+        resetearRadios()
+    })
 }
 
-function seleccionSector() {
+function seleccionMetodoPago() {
+    formularioMetodopago.addEventListener("submit", manejarPago)
+}
+
+function manejarPago(e) {
+    e.preventDefault()
+
+    let metodoSeleccionado = document.querySelector('input[name="pago"]:checked')
+
+    if (metodoSeleccionado) {
+        if (metodoSeleccionado.value === "debito") {
+            opcionTarjetaDebito()
+        } else if (metodoSeleccionado.value === "mercadopago") {
+            opcionMercadoPago()
+        }
+    } else {
+        Swal.fire({
+            icon: "warning",
+            title: "Para continuar...",
+            text: "Por favor selecciona un método de pago",
+            confirmButtonText: "ACEPTAR"
+        })
+    }
+}
+
+
+function sectoresQuePuedenCubrirCantidad(cantidad) {
+    return Object.keys(show)
+        .filter(clave => clave.startsWith("entradasSector") && show[clave] >= cantidad)
+        .map(clave => clave.replace("entradasSector", ""))
+}
+
+function seleccionSector(sectoresValidos) {
     const seleccionSector = document.querySelectorAll('input[name="sector"]')
 
     seleccionSector.forEach(radio => {
+
+        radio.disabled = !sectoresValidos.includes(radio.value)
+
         radio.addEventListener('change', () => {
             sectorSeleccionado = radio.value
 
             textoSectores.innerText = `Sector ${sectorSeleccionado}`
             textoSectores.classList.add('selecionado')
 
-            iconoPago.classList.add('iconoActivo');
+            iconoPago.classList.add('iconoActivo')
+
+            Swal.fire({
+                toast: true,
+                position: "top-end",
+                icon: "info",
+                title: `Seleccionaste el Sector ${sectorSeleccionado}`,
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true
+            })
             irAlPaso(2)
         })
     })
-
-    seleccionMetodoPago()
 }
+
 
 function seleccionEntradas() {
     irAlPaso(0)
+
     precioEntradas.innerHTML = `Valor entrada: $${show.precio}`
     const seleccionEntradas = document.querySelectorAll('input[name="entradas"]')
 
     seleccionEntradas.forEach(radio => {
         radio.addEventListener('change', () => {
-            entradasSeleccionadas = radio.value
+            entradasSeleccionadas = Number(radio.value)
 
-            textoEntradas.innerText = `${entradasSeleccionadas} Entradas`
-            textoEntradas.classList.add('selecionado')
+            const sectoresValidos = sectoresQuePuedenCubrirCantidad(entradasSeleccionadas)
 
-            iconoSectores.classList.add('iconoActivo');
-            OpcionSelectorSectores.classList.add('paso-activo')
+            if (sectoresValidos.length === 0) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Cantidad no disponible",
+                    text: "No hay ningún sector que tenga tantas entradas. Por favor, reduce la cantidad.",
+                    confirmButtonText: "ACEPTAR"
+                })
 
-            irAlPaso(1)
-        });
-    });
+                textoEntradas.innerText = `Entradas`
+                textoEntradas.classList.remove('selecionado')
+                resetearRadios()
+            } else {
+                Swal.fire({
+                    toast: true,
+                    position: "top-end",
+                    icon: "info",
+                    title: `Seleccionaste ${entradasSeleccionadas} entradas`,
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true
+                })
 
-    seleccionSector()
+                textoEntradas.innerText = `${entradasSeleccionadas} Entradas`
+                textoEntradas.classList.add('selecionado')
+
+                iconoSectores.classList.add('iconoActivo')
+                OpcionSelectorSectores.classList.add('paso-activo')
+                irAlPaso(1)
+
+                seleccionSector(sectoresValidos)
+            }
+        })
+    })
 }
 
 OpcionSelectorEntradas.addEventListener('click', () => {
     resetearRadios()
     textoEntradas.innerText = `Entradas`
     textoEntradas.classList.remove('selecionado')
-    iconoSectores.classList.remove('iconoActivo');
+    iconoSectores.classList.remove('iconoActivo')
     OpcionSelectorSectores.classList.remove('paso-activo')
+    textoSectores.innerText = `Sectores`
+    textoSectores.classList.remove('selecionado')
+    iconoPago.classList.remove('iconoActivo')
     seleccionEntradas()
 })
 
 function resetearRadios() {
     document.querySelectorAll('input[type="radio"]').forEach(radio => {
-        radio.checked = false;
-    });
+        radio.checked = false
+    })
 }
 
 function irAlPaso(n) {
-    contenedorPasos.style.transform = `translateX(-${n * 100}%)`;
+    contenedorPasos.style.transform = `translateX(-${n * 100}%)`
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
     await cargarShows()
     renderizarTituloShow()
+    seleccionMetodoPago()
 })
