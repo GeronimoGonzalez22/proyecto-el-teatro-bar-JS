@@ -326,7 +326,8 @@ fieldset {
   flex-direction: column;
 }
 
-.sectores label span {
+
+.boton-sectores {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -349,7 +350,7 @@ input[type="radio"] {
   display: none;
 }
 
-label span {
+.boton-entrada {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -627,4 +628,128 @@ iframe {
   flex: 0 0 100%;
   box-sizing: border-box;
   padding: 20px;
+}
+
+.metodo-pago {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.metodo-pago form {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  gap: 1.5rem;
+}
+
+.opcion-pago {
+  width: 100%;
+}
+
+.opcion-pago label {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 1rem;
+  text-transform: uppercase;
+  color: #212529;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.opcion-pago label:hover {
+  border-color: #A80000;
+}
+
+.opcion-pago input:checked+label {
+  border-color: #A80000;
+  font-weight: bold;
+  color: #A80000;
+}
+
+.btn-continuar {
+  margin-top: 10px;
+  padding: 12px 20px;
+  border: none;
+  background: #A80000;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-continuar:hover {
+  background: #8A0000;
+}
+
+/* Contenedor de botones */
+.swal2-actions {
+  display: flex !important;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Estilo común para ambos botones */
+.swal2-confirm,
+.swal2-cancel {
+  display: flex;                  /* Para centrar texto */
+  justify-content: center;
+  align-items: center;
+  flex: 1;                        /* Ambos botones toman el mismo ancho */
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  white-space: nowrap;            /* Evita que el texto se divida */
+  transition: all 0.3s;
+  cursor: pointer;
+  box-sizing: border-box;
+  min-width: 200px;               /* Garantiza un tamaño mínimo */
+  max-width: 250px;               /* Opcional, evita que sea demasiado grande */
+}
+
+/* Confirmar */
+.swal2-confirm {
+  background-color: #fff !important;
+  border: 2px solid #A80000 !important;
+  color: #A80000 !important;
+}
+
+.swal2-confirm:hover {
+  background-color: #A80000 !important;
+  color: #fff !important;
+}
+
+/* Cancelar */
+.swal2-cancel {
+  background-color: #fff !important;
+  border: 2px solid #888 !important;
+  color: #888 !important;
+}
+
+.swal2-cancel:hover {
+  background-color: #888 !important;
+  color: #fff !important;
+}
+
+.swal2-popup {
+  border-radius: 1rem;
+}
+
+.swal2-title {
+  color: #252525;
+}
+
+.swal2-input{
+margin: 0.5em 4em 0.5em;
 }
