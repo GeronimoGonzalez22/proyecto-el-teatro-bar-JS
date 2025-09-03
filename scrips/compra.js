@@ -152,7 +152,7 @@ function opcionTarjetaDebito() {
                                     allowOutsideClick: false,
                                     allowEscapeKey: false
                                 }).then(() => {
-                                    window.location.href = "/index.html"
+                                    window.location.href = "../index.html"
                                 })
                             } else if (finalResult.dismiss === Swal.DismissReason.cancel) {
                                 Swal.fire({
@@ -163,7 +163,7 @@ function opcionTarjetaDebito() {
                                     allowOutsideClick: false,
                                     allowEscapeKey: false
                                 }).then(() => {
-                                    window.location.href = "/index.html"
+                                    window.location.href = "../index.html"
                                 })
                             }
                         })
@@ -243,7 +243,7 @@ function opcionMercadoPago() {
                             allowOutsideClick: false,
                             allowEscapeKey: false
                         }).then(() => {
-                            window.location.href = "/index.html"
+                            window.location.href = "../index.html"
                         })
                     } else if (result.dismiss === Swal.DismissReason.cancel) {
                         Swal.fire({
@@ -254,7 +254,7 @@ function opcionMercadoPago() {
                             allowOutsideClick: false,
                             allowEscapeKey: false
                         }).then(() => {
-                            window.location.href = "/index.html"
+                            window.location.href = "../index.html"
                         })
                     }
                 })
