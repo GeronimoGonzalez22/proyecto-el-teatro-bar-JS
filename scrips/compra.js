@@ -4,10 +4,12 @@ const textoEntradas = document.getElementById('texto-entradas')
 const textoSectores = document.getElementById('texto-sectores')
 const iconoPago = document.getElementById('iconoPago')
 const tituloShow = document.querySelector('.titulo-show')
+const pasosCompra = document.querySelector('.pasos-compra')
 const selectorEntradas = document.getElementById('selector-entradas')
 const OpcionSelectorEntradas = document.getElementById('contenedor-selecciones__entradas')
 const iconoSectores = document.getElementById('iconoSectores')
 const OpcionSelectorSectores = document.getElementById('contenedor-selecciones__sectores')
+const OpcionSelectorPago = document.getElementById('contenedor-selecciones__pago')
 const contenedorPasos = document.getElementById('contenedor-pasos')
 const formularioMetodopago = document.getElementById("formulario-metodo-pago")
 
@@ -18,12 +20,7 @@ const shows = []
 let show
 let entradasSeleccionadas
 let sectorSeleccionado
-let entradasDisponibles
-
-
-function calcularEntradasDisponibles() {
-    return show.entradasSectorA + show.entradasSectorB + show.entradasSectorC + show.entradasSectorD
-}
+let pasoActual = 0
 
 async function cargarShows() {
     try {
@@ -55,6 +52,8 @@ function renderizarTituloShow() {
                                             </div>
                                         </div>
                                     </div>`
+
+        pasosCompra.classList.add('ocultar')
     }
 }
 
@@ -145,9 +144,27 @@ function opcionTarjetaDebito() {
                             allowEscapeKey: false
                         }).then((finalResult) => {
                             if (finalResult.isConfirmed) {
-                                Swal.fire("Descarga iniciada", "Tus entradas se están descargando.", "info")
+                                Swal.fire({
+                                    title: "Descarga iniciada",
+                                    text: "Tus entradas se están descargando.",
+                                    icon: "info",
+                                    confirmButtonText: "SEGUIR NAVEGANDO",
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false
+                                }).then(() => {
+                                    window.location.href = "/index.html"
+                                })
                             } else if (finalResult.dismiss === Swal.DismissReason.cancel) {
-                                Swal.fire("Continuar navegando", "Podés seguir explorando el sitio.", "info")
+                                Swal.fire({
+                                    title: "Continuar navegando",
+                                    text: "Podés seguir explorando el sitio.",
+                                    icon: "info",
+                                    confirmButtonText: "SEGUIR NAVEGANDO",
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false
+                                }).then(() => {
+                                    window.location.href = "/index.html"
+                                })
                             }
                         })
                     })
@@ -218,10 +235,27 @@ function opcionMercadoPago() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // descarga las entradas
-                        Swal.fire("Descarga iniciada", "Tus entradas se están descargando.", "info")
+                        Swal.fire({
+                            title: "Descarga iniciada",
+                            text: "Tus entradas se están descargando.",
+                            icon: "info",
+                            confirmButtonText: "SEGUIR NAVEGANDO",
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        }).then(() => {
+                            window.location.href = "/index.html"
+                        })
                     } else if (result.dismiss === Swal.DismissReason.cancel) {
-                        // ir al inicio window.location.href = "/"
-                        Swal.fire("Continuar navegando", "Podés seguir explorando el sitio.", "info")
+                        Swal.fire({
+                            title: "Continuar navegando",
+                            text: "Podés seguir explorando el sitio.",
+                            icon: "info",
+                            confirmButtonText: "SEGUIR NAVEGANDO",
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        }).then(() => {
+                            window.location.href = "/index.html"
+                        })
                     }
                 })
             })
@@ -258,7 +292,6 @@ function manejarPago(e) {
     }
 }
 
-
 function sectoresQuePuedenCubrirCantidad(cantidad) {
     return Object.keys(show)
         .filter(clave => clave.startsWith("entradasSector") && show[clave] >= cantidad)
@@ -280,6 +313,8 @@ function seleccionSector(sectoresValidos) {
 
             iconoPago.classList.add('iconoActivo')
 
+
+            OpcionSelectorPago.classList.add('paso-activo-final')
             Swal.fire({
                 toast: true,
                 position: "top-end",
@@ -293,7 +328,6 @@ function seleccionSector(sectoresValidos) {
         })
     })
 }
-
 
 function seleccionEntradas() {
     irAlPaso(0)
@@ -342,16 +376,37 @@ function seleccionEntradas() {
     })
 }
 
+//Volver a seleccion entradas
 OpcionSelectorEntradas.addEventListener('click', () => {
-    resetearRadios()
-    textoEntradas.innerText = `Entradas`
-    textoEntradas.classList.remove('selecionado')
-    iconoSectores.classList.remove('iconoActivo')
-    OpcionSelectorSectores.classList.remove('paso-activo')
-    textoSectores.innerText = `Sectores`
-    textoSectores.classList.remove('selecionado')
-    iconoPago.classList.remove('iconoActivo')
-    seleccionEntradas()
+
+    if (pasoActual >= 1) {
+        resetearRadios()
+        textoEntradas.innerText = `Entradas`
+        textoEntradas.classList.remove('selecionado')
+        iconoSectores.classList.remove('iconoActivo')
+        OpcionSelectorSectores.classList.remove('paso-activo')
+        textoSectores.innerText = `Sectores`
+        OpcionSelectorPago.classList.remove('paso-activo-final')
+        textoSectores.classList.remove('selecionado')
+        iconoPago.classList.remove('iconoActivo')
+        seleccionEntradas()
+    }
+
+})
+
+//Volver a seleccion sectores
+OpcionSelectorSectores.addEventListener('click', () => {
+
+    if (pasoActual >= 2) {
+        resetearRadios()
+        OpcionSelectorSectores.classList.add('paso-activo')
+        textoSectores.innerText = `Sectores`
+        OpcionSelectorPago.classList.remove('paso-activo-final')
+        textoSectores.classList.remove('selecionado')
+        iconoPago.classList.remove('iconoActivo')
+        irAlPaso(1)
+    }
+
 })
 
 function resetearRadios() {
@@ -361,6 +416,7 @@ function resetearRadios() {
 }
 
 function irAlPaso(n) {
+    pasoActual = n
     contenedorPasos.style.transform = `translateX(-${n * 100}%)`
 }
 
